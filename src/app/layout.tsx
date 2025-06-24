@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-gradient-to-bl from-blue-500 to bg-blue-950">
+    <html lang="en" className="bg-gradient-to-bl from-zinc-800 to bg-zinc-950">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

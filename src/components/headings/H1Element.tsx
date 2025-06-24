@@ -8,7 +8,7 @@ export default function H1Element({
 }: Headings) {
   return (
     <h1
-      className={`font-merriweather font-black text-lg md:text-xl lg:text-2xl ${additionalClasses}`}
+      className={`font-merriweather font-black text-white text-lg md:text-xl lg:text-xl ${additionalClasses}`}
       id={id}
       aria-label={ariaLabel}
     >
