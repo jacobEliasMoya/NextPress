@@ -33,9 +33,9 @@ export default function Form() {
   const passwordConfirmation = (): JSX.Element => {
     const { password, confirmPassword } = formState;
     if (password === confirmPassword && password.length > 0) {
-      return <p className="text-green-800 col-span-full">Passwords Match</p>;
+      return <p className="text-green-600 col-span-full">Passwords Match</p>;
     } else {
-      return <p className="text-red-800 col-span-full">Please Enter Matching Passwords</p>;
+      return <p className="text-red-600 col-span-full">Please Enter Matching Passwords</p>;
     }
   };
 
@@ -44,7 +44,7 @@ export default function Form() {
   };
 
   return (
-    <form className="w-full md:grid-cols-2 grid gap-4" onSubmit={handleSubmit}>
+    <form className="w-full md:grid-cols-2 grid gap-4 px-12 pb-12 pt-6 " onSubmit={handleSubmit}>
       <FormField
         maxCharacters={maxusernameChars}
         htmlFor={"username"}
