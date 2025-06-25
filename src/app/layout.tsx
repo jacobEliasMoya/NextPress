@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-gradient-to-bl from-blue-500 to bg-blue-950">
+    <html lang="en" className="[background:linear-gradient(90deg,white_0%_50%,#9fd7ff_50%_100%)]">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

@@ -33,9 +33,9 @@ export default function Form() {
   const passwordConfirmation = (): JSX.Element => {
     const { password, confirmPassword } = formState;
     if (password === confirmPassword && password.length > 0) {
-      return <p className="text-green-800">Passwords Match</p>;
+      return <p className="text-green-600 col-span-full">Passwords Match</p>;
     } else {
-      return <p className="text-red-800">Please Enter Matching Passwords</p>;
+      return <p className="text-red-600 col-span-full">Please Enter Matching Passwords</p>;
     }
   };
 
@@ -44,7 +44,7 @@ export default function Form() {
   };
 
   return (
-    <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
+    <form className="w-full md:grid-cols-2 grid gap-4 px-12 pb-12 pt-6 " onSubmit={handleSubmit}>
       <FormField
         maxCharacters={maxusernameChars}
         htmlFor={"username"}
@@ -54,8 +54,7 @@ export default function Form() {
         name={"username"}
         value={formState.username}
         placeholder={`Max ${maxusernameChars} Character(s)`}
-        onChange={handleChange}
-      />
+        onChange={handleChange} additionalClasses={undefined}      />
 
       <FormField
         htmlFor={"email"}
@@ -66,8 +65,7 @@ export default function Form() {
         value={formState.email}
         placeholder="Enter Email"
         onChange={handleChange}
-        maxCharacters={undefined}
-      />
+        maxCharacters={undefined} additionalClasses={undefined}      />
 
       <FormField
         htmlFor={"password"}
@@ -78,8 +76,7 @@ export default function Form() {
         value={formState.password}
         placeholder="Enter password"
         onChange={handleChange}
-        maxCharacters={undefined}
-      />
+        maxCharacters={undefined} additionalClasses={undefined}      />
 
       <FormField
         htmlFor={"confirmPassword"}
@@ -90,8 +87,7 @@ export default function Form() {
         value={formState.confirmPassword}
         placeholder="Enter password"
         onChange={handleChange}
-        maxCharacters={undefined}
-      />
+        maxCharacters={undefined} additionalClasses={undefined}      />
 
       {passwordConfirmation()}
 
@@ -101,8 +97,7 @@ export default function Form() {
         id={""}
         name={""}
         value={"Submit"}
-        onChange={undefined}
-      />
+        onChange={undefined} additionalClasses={'col-span-full'}      />
     </form>
   );
 }

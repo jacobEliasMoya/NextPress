@@ -4,12 +4,12 @@ import Form from "../components/form/layout/Form";
 export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center w-full p-8">
-      <div className="w-full md:w-3/5 lg:w-1/3 rounded-xl bg-white min-h-40 p-8 py-12 flex flex-col gap-6 group">
+      <div className="w-full md:w-8/12 rounded-xl bg-blue-100 min-h-40 flex flex-col gap-6 group overflow-hidden border-5 border-white">
         <H1Element
-          title={"Create User"}
+          title={"Onboarding Form"}
           id={"new-user-heading"}
           ariaLabel={"new-user-heading"}
-          additionalClasses={undefined}
+          additionalClasses={"w-full bg-blue-400 flex items-center justify-start p-6 px-12"}
         />
         <Form />
       </div>
