@@ -44,12 +44,15 @@ export default function Form() {
 
     const { email, password } = formState;
 
-    const res = fetch("http://localhost:5000/", {
+    const res = await fetch("http://localhost:5000/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-    });
-    
+    })
+
+    const data = await res.json()
+
+    console.log(data);
   };
 
   return (
