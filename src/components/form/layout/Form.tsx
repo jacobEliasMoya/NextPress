@@ -1,21 +1,17 @@
 "use client";
 
-import { FormEvent, JSX, useState } from "react";
+import { JSX, useState } from "react";
 import Input from "../misc/Input";
 import FormField from "../fields/FormField";
 
 interface FormState {
-  username: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export default function Form() {
-  const maxusernameChars = 20;
-
   const [formState, setFormState] = useState<FormState>({
-    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -35,27 +31,32 @@ export default function Form() {
     if (password === confirmPassword && password.length > 0) {
       return <p className="text-green-600 col-span-full">Passwords Match</p>;
     } else {
-      return <p className="text-red-600 col-span-full">Please Enter Matching Passwords</p>;
+      return (
+        <p className="text-red-600 col-span-full">
+          Please Enter Matching Passwords
+        </p>
+      );
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const { email, password } = formState;
+
+    const res = fetch("http://localhost:5000/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    
   };
 
   return (
-    <form className="w-full md:grid-cols-2 grid gap-4 px-12 pb-12 pt-6 " onSubmit={handleSubmit}>
-      <FormField
-        maxCharacters={maxusernameChars}
-        htmlFor={"username"}
-        title="Enter Username"
-        type={"text"}
-        id={"username"}
-        name={"username"}
-        value={formState.username}
-        placeholder={`Max ${maxusernameChars} Character(s)`}
-        onChange={handleChange} additionalClasses={undefined}      />
-
+    <form
+      className="w-full md:grid-cols-2 grid gap-4 px-12 pb-12 pt-6 "
+      onSubmit={handleSubmit}
+    >
       <FormField
         htmlFor={"email"}
         title={"Please Enter a Email"}
@@ -65,7 +66,9 @@ export default function Form() {
         value={formState.email}
         placeholder="Enter Email"
         onChange={handleChange}
-        maxCharacters={undefined} additionalClasses={undefined}      />
+        maxCharacters={undefined}
+        additionalClasses={"col-span-full"}
+      />
 
       <FormField
         htmlFor={"password"}
@@ -76,7 +79,9 @@ export default function Form() {
         value={formState.password}
         placeholder="Enter password"
         onChange={handleChange}
-        maxCharacters={undefined} additionalClasses={undefined}      />
+        maxCharacters={undefined}
+        additionalClasses={undefined}
+      />
 
       <FormField
         htmlFor={"confirmPassword"}
@@ -87,7 +92,9 @@ export default function Form() {
         value={formState.confirmPassword}
         placeholder="Enter password"
         onChange={handleChange}
-        maxCharacters={undefined} additionalClasses={undefined}      />
+        maxCharacters={undefined}
+        additionalClasses={undefined}
+      />
 
       {passwordConfirmation()}
 
@@ -97,7 +104,9 @@ export default function Form() {
         id={""}
         name={""}
         value={"Submit"}
-        onChange={undefined} additionalClasses={'col-span-full'}      />
+        onChange={undefined}
+        additionalClasses={"col-span-full"}
+      />
     </form>
   );
 }

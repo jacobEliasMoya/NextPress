@@ -11,10 +11,11 @@ export default function FormField({
   value,
   placeholder,
   maxCharacters,
+  additionalClasses,
   onChange,
 }: FormFieldTypes) {
   return (
-    <div className="flex flex-col gap-4 w-full group">
+    <div className={`flex flex-col gap-4 w-full group ${additionalClasses}`}>
       <Label htmlFor={htmlFor} title={title} />
 
       <Input
@@ -24,8 +25,7 @@ export default function FormField({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        maxCharacters={maxCharacters}
-      />
+        maxCharacters={maxCharacters} additionalClasses={""}      />
     </div>
   );
 }
