@@ -40,6 +40,7 @@ export default function Form() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
     e.preventDefault();
 
     const { email, password } = formState;
@@ -53,6 +54,7 @@ export default function Form() {
     const data = await res.json()
 
     console.log(data);
+
   };
 
   return (
